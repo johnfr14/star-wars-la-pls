@@ -13,7 +13,7 @@ const handleButtonClick = () => {
 
 useEffect(() => {
 fetchPlanets(url, setPlanets, setUrl)
-}, [])
+}, [url])
 
 console.log(planets)
 for (const elem of planets) {
