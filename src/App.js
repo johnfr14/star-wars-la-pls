@@ -6,7 +6,7 @@ function App() {
       <h1 className="mb-5">Planètes dans l'univer Star Wars</h1>
       <Planets /> 
     </section>
-  );
+  ); 
 }
 
 export default App;
