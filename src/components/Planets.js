@@ -2,16 +2,19 @@ import { useEffect, useState } from "react"
 import Planet from "./Planet"
 import fetchPlanets from "../fetchPlanets"
 
+
 const Planets = () => {
+const planet = []
 const [planets, setPlanets] = useState([])
 const [url, setUrl] = useState("https://swapi.dev/api/planets/")
-const planet = []
+
+
 const handleButtonClick = () => {
-  fetchPlanets(url, setUrl)
+  fetchPlanets(url, setUrl, setPlanets, planets)
 }
 
 useEffect(() => {
- fetch(url)
+  fetch("https://swapi.dev/api/planets/")
     .then((response) => {
       if (!response.ok) {
         throw new Error("something went wrong")
@@ -19,12 +22,12 @@ useEffect(() => {
       return response.json()
     })
     .then((data) => {
-      setPlanets([...planets, ...data.results])
+      setPlanets(data.results)
     })
     .catch((error) => {
       console.error(error.message)
     })
-}, [url])
+}, [])
 
 for (const elem of planets) {
     planet.push(<Planet key={elem.name} name={elem.name} pop={elem.population} climat={elem.climate}/>)

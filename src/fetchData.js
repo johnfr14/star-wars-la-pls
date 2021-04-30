@@ -1,6 +1,6 @@
-import fetchData from "./fetchData"
 
-const fetchPlanets = (url, setUrl, setPlanets, planets) => {
+
+const fetchData = async (url, setPlanets, planets) => {
     fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -9,12 +9,11 @@ const fetchPlanets = (url, setUrl, setPlanets, planets) => {
       return response.json()
     })
     .then((data) => {
-      setUrl(data.next)
-      fetchData(data.next, setPlanets, planets)
+      setPlanets([...planets,...data.results])
     })
     .catch((error) => {
       console.error(error.message)
     })
 }
 
-export default fetchPlanets
+export default fetchData
