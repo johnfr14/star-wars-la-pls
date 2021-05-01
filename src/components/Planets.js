@@ -4,7 +4,6 @@ import fetchPlanets from "../fetchPlanets"
 
 
 const Planets = () => {
-const planet = []
 const [planets, setPlanets] = useState([])
 const [url, setUrl] = useState("https://swapi.dev/api/planets/")
 
@@ -29,13 +28,13 @@ useEffect(() => {
     })
 }, [])
 
-for (const elem of planets) {
-    planet.push(<Planet key={elem.name} name={elem.name} pop={elem.population} climat={elem.climate}/>)
-  }
+
 
 return(
   <div className="row" wfd-id="2">
-    {planet}
+    {planets.map(elem => (
+      <Planet key={elem.name} name={elem.name} pop={elem.population} climat={elem.climate}/>
+    ))}
     <button onClick={handleButtonClick} type="button" className="btn btn-dark" wfd-id="14">suivantes</button>
   </div>
 ) 
