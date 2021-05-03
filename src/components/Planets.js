@@ -21,6 +21,7 @@ useEffect(() => {
       return response.json()
     })
     .then((data) => {
+      setUrl(data.next)
       setPlanets(data.results)
     })
     .catch((error) => {
